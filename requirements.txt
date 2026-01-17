@@ -1,0 +1,13 @@
+Flask
+nltk
+langchain-core
+langchain-huggingface
+huggingface-hub
+transformers
+torch
+diffusers
+accelerate
+python-dotenv
+
+dotenv
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>The Empathy Engine</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	<style>
+		body {
+			background: #f4f6fb;
+			font-family: 'Segoe UI', Tahoma, sans-serif;
+		}
+
+		.container {
+			margin-top: 80px;
+			max-width: 600px;
+		}
+
+		.card {
+			border-radius: 15px;
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+			border: none;
+		}
+
+		.card-header {
+			background: #4a6cf7;
+			/* simple solid color */
+			color: white;
+			text-align: center;
+			font-size: 22px;
+			font-weight: 600;
+			border-radius: 15px 15px 0 0;
+		}
+
+		textarea {
+			resize: none;
+		}
+
+		.btn-primary {
+			background: #4a6cf7;
+			border: none;
+		}
+
+		.btn-primary:hover {
+			background: #3b5bdc;
+		}
+
+		.emotion-box {
+			margin-top: 15px;
+			font-weight: 600;
+			text-align: center;
+			color: #333;
+		}
+
+		audio {
+			width: 100%;
+			margin-top: 15px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header">
+				The Empathy Engine
+			</div>
+
+			<div class="card-body">
+				<form id="empathyForm">
+					<div class="form-group">
+						<label>Enter your text</label>
+						<textarea class="form-control" id="textInput" rows="4"
+							placeholder="Type something emotional..."></textarea>
+					</div>
+
+					<button type="submit" class="btn btn-primary btn-block">
+						Generate Emotional Voice
+					</button>
+				</form>
+
+				<div id="emotionResult" class="emotion-box"></div>
+
+				<audio id="audioPlayer" controls style="display:none;"></audio>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script>
+		$("#empathyForm").on("submit", function (e) {
+			e.preventDefault();
+
+			const text = $("#textInput").val();
+
+			$.ajax({
+				type: "POST",
+				url: "/generate",
+				data: { text: text },
+				success: function (response) {
+					$("#emotionResult").text("Detected Emotion: " + response.emotion);
+					$("#audioPlayer").attr("src", response.audio_url);
+					$("#audioPlayer").show();
+				}
+			});
+		});
+	</script>
+
+</body>
+
+</html>

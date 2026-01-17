@@ -38,10 +38,5 @@ This web application that detects the emotional sentiment of user-provided text 
 
 ---
 
-## Emotion Classification
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/df89f178-487b-4ab3-8ec0-60c15bd10520" />
 
-The sentiment is determined by selecting the label with the highest confidence score.
-
-```python
-top_emotion = max(result, key=lambda x: x.score)
-emotion = top_emotion.label

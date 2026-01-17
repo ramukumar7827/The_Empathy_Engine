@@ -30,10 +30,10 @@ This web application that detects the emotional sentiment of user-provided text 
   ### 1.Clone the Repository
   ### 2.Install Dependencies
   ### 3.pip install -r requirements.txt
-  ###4.API Key Configuration
+  ### 4.API Key Configuration
       Create a .env file in the root directory:
       HUGGINGFACEHUB_API_TOKEN=your_huggingface_api_token
-  ###5.Run the Application
+  ### 5.Run the Application
        python app.py
 
 ---
